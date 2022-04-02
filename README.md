@@ -43,6 +43,7 @@ Let me guide you through how to set it up:
 1. Go ahead and clone this repo.
 1. Go inside frontend folder : ```cd frontend/```
 1. Make sure you have Node installed.
+    * If using `wsl2`, set this environment variable. Is this necessary because Node tries to open a browser: ```export BROWSER=none```
 1. Install npm dependencies: ```npm install```
 1. Run it in development mode: ```npm start```
 
