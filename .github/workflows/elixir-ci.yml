@@ -1,0 +1,125 @@
+name: Elixir CI
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'backend/**'
+      - '!frontend/**'
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'backend/**'
+      - '!frontend/**'
+
+defaults:
+ run:
+  working-directory: backend
+
+jobs:
+  check_lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Read .tool-versions
+        uses: marocchino/tool-versions-action@v1
+        id: versions
+      - name: Setup tool versions
+        uses: erlef/setup-beam@v1
+        with:
+          otp-version: ${{ steps.versions.outputs.erlang }}
+          elixir-version: ${{ steps.versions.outputs.elixir }}
+      - name: Restore dependencies cache
+        uses: actions/cache@v2
+        with:
+          path: deps
+          key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
+          restore-keys: ${{ runner.os }}-mix-
+      - name: deps
+        run: mix deps.get
+      - name: LINT CODE
+        run: mix credo --strict
+
+  check_format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Read .tool-versions
+        uses: marocchino/tool-versions-action@v1
+        id: versions
+      - name: Setup tool versions
+        uses: erlef/setup-beam@v1
+        with:
+          otp-version: ${{ steps.versions.outputs.erlang }}
+          elixir-version: ${{ steps.versions.outputs.elixir }}
+      - name: Restore dependencies cache
+        uses: actions/cache@v2
+        with:
+          path: deps
+          key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
+          restore-keys: ${{ runner.os }}-mix-
+      - name: deps
+        run: mix deps.get
+      - name: FORMAT
+        run: mix format --check-formatted
+
+  check_security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Read .tool-versions
+        uses: marocchino/tool-versions-action@v1
+        id: versions
+      - name: Setup tool versions
+        uses: erlef/setup-beam@v1
+        with:
+          otp-version: ${{ steps.versions.outputs.erlang }}
+          elixir-version: ${{ steps.versions.outputs.elixir }}
+      - name: Restore dependencies cache
+        uses: actions/cache@v2
+        with:
+          path: deps
+          key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
+          restore-keys: ${{ runner.os }}-mix-
+      - name: deps
+        run: mix deps.get
+      - name: Sobelow
+        run: mix sobelow --config
+
+  check_quality:
+    runs-on: ubuntu-latest
+    services:
+      db:
+        image: postgres:11
+        ports: [ '5432:5432' ]
+        env:
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    steps:
+      - uses: actions/checkout@v2
+      - name: Read .tool-versions
+        uses: marocchino/tool-versions-action@v1
+        id: versions
+      - name: Setup tool versions
+        uses: erlef/setup-beam@v1
+        with:
+          otp-version: ${{ steps.versions.outputs.erlang }}
+          elixir-version: ${{ steps.versions.outputs.elixir }}
+      - name: Restore dependencies cache
+        uses: actions/cache@v2
+        with:
+          path: deps
+          key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
+          restore-keys: ${{ runner.os }}-mix-
+      - name: deps
+        run: mix deps.get
+      - name: coveralls
+        run: mix coveralls.json
+      - uses: codecov/codecov-action@v1
+        with:
+          flags: backend
+          token: ${{ secrets.CODECOV_TOKEN }}
