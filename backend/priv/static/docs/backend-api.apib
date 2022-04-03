@@ -1,0 +1,116 @@
+FORMAT: 1A
+HOST: https://localhost:4000/
+
+# coverflex - Backend API
+
+A simple API can be used by company employees to self-manage their benefits.
+
+## Users [/api/users/{user_id}]
+
+### Get user or create [GET]
+
++ Parameters
+    + user_id: "raulpe7eira" (string) - An username of the user.
+
++ Response 200 (application/json)
+
+        {
+            "user": {
+                "data": {
+                    "balance": "49898.02",
+                    "product_ids": [
+                        "netflix",
+                        "spotify"
+                    ]
+                },
+                "user_id": "raulpe7eira"
+            }
+        }
+        
+## Products [/api/products]
+
+### List products [GET]
+
++ Response 200 (application/json)
+
+        {
+            "products": [
+                {
+                    "id": "amazon-prime",
+                    "name": "Amazon Prime",
+                    "price": "99.99"
+                },
+                {
+                    "id": "hbo-max",
+                    "name": "HBO Max",
+                    "price": "85.99"
+                },
+                {
+                    "id": "netflix",
+                    "name": "Netflix",
+                    "price": "75.99"
+                },
+                {
+                    "id": "spotify",
+                    "name": "Spotify",
+                    "price": "55.99"
+                }
+            ]
+        }
+
+## Orders [/api/orders]
+
+### Create order [POST]
+
++ Request (application/json)
+
+        {
+            "order": {
+                "items": [
+                    "amazon-prime",
+                    "hbo-max"
+                ],
+                "user_id": "raulpe7eira"
+            }
+        }
+
++ Response 200 (application/json)
+
+    + Body
+
+        {
+            "order": {
+                "data": {
+                    "items": [
+                        "amazon-prime",
+                        "hbo-max"
+                    ],
+                    "total": "185.89"
+                },
+                "order_id": "5f803099-a901-4a32-9c1a-3b3ad5f8f077"
+            }
+        }
+
++ Response 400 (application/json)
+
+    + Body
+    
+        {
+            "error": "products_not_found"
+        }
+
++ Response 400 (application/json)
+
+    + Body
+    
+        {
+            "error": "products_already_purchased"
+        }
+
++ Response 400 (application/json)
+
+    + Body
+    
+        {
+            "error": "insufficient_balance"
+        }

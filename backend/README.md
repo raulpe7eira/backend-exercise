@@ -1,16 +1,65 @@
 # Backend
 
-To start your Phoenix server:
+> A small project to test my skills.
 
-  * Install dependencies with `mix deps.get`
-  * Create and migrate your database with `mix ecto.setup`
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+![backend-api snapshot](/backend/priv/static/docs/backend-api.png)
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+## :stop_sign: You need install before to run locally
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+[git](https://git-scm.com) ++
+[asdf](https://asdf-vm.com) ++
+[Docker](https://docker.com)
 
-## ER Diagram
+## How to use and run locally?
+
+```bash
+# Clone this repository
+git clone git@github.com:raulpe7eira/backend-exercise.git
+
+# Setup working directory
+cd backend
+
+# Install erlang and elixir
+asdf install
+
+# Install dependencies
+mix deps.get
+
+# Start database
+docker-compose up -d
+
+# Setup database
+mix ecto.setup
+
+# Run check lint
+mix credo --strict
+
+# Run check format
+mix format --check-formatted
+
+# Run check security
+mix sobelow --config
+
+# Run check quality
+mix coveralls.html
+
+# Start server or inside IEx with `iex -S mix phx.server`
+mix phx.server
+```
+
+After these commands, you can access the following features at [`localhost:4000`](http://localhost:4000). The API documentation is avaliable at home path `/docs`. I wrote with [API Blueprint](https://apiblueprint.org), I used [apiary](https://apiary.io) editor and generated the static `html` with [aglio](https://github.com/danielgtaylor/aglio).
+
+## My decisions
+
+1. I planning my deliver with [Github Project](https://github.com/raulpe7eira/backend-exercise/projects/1), and I lock some minute to doodles some pre-solutions, like the ones listed in [doodles section](#doodles).
+
+1. My code structure has folders to put commands by entities, I don't kwon, if it's a good aprouch... :sweat_smile:.
+
+1. Finally, the project was a very good exercise for me, thanks for the opportunite :pray:.
+
+### Doodles
+
+> Entity relationship diagram
 
 ```mermaid
 erDiagram
@@ -19,7 +68,7 @@ erDiagram
   ORDER }o..|{ PRODUCT : ""
 ```
 
-## Feature `GET /api/users/:user_id`
+> Sequence diagram to `GET /api/users/:user_id`
 
 ```mermaid
 sequenceDiagram
@@ -48,7 +97,7 @@ sequenceDiagram
     BACKEND-->>-FRONTEND: :200 ++ :user
 ```
 
-## Feature `GET /api/products`
+> Sequence diagram to `GET /api/products`
 
 ```mermaid
 sequenceDiagram
@@ -72,7 +121,7 @@ sequenceDiagram
     BACKEND-->>-FRONTEND: :200 ++ :[products]
 ```
 
-## Feature `GET /api/products`
+> Sequence diagram to `GET /api/products`
 
 ```mermaid
 sequenceDiagram
@@ -131,11 +180,3 @@ sequenceDiagram
     O_COMMAND-->>-BACKEND: :200 ++ :order
     BACKEND-->>-FRONTEND: :200 ++ :order
 ```
-
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
