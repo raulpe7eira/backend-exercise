@@ -8,6 +8,7 @@ defmodule BackendWeb.Router do
   scope "/api", BackendWeb do
     pipe_through :api
 
-    resources("/users", UsersController, only: [:show], param: "user_id")
+    resources "/users", UsersController, only: [:show], param: "user_id"
+    resources "/products", ProductsController, only: [:index]
   end
 end
