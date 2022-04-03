@@ -15,7 +15,7 @@ defmodule BackendWeb.UsersViewTest do
              user: %{
                user_id: "raulpe7eira",
                data: %{
-                 balance: 50_000,
+                 balance: %Decimal{coef: 1991, exp: -1},
                  product_ids: []
                }
              }

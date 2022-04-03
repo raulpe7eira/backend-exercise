@@ -1,5 +1,11 @@
 {
     "skip_files": [
+        "lib/backend/application.ex",
+        "lib/backend/repo.ex",
+        "lib/backend_web/views/error_helpers.ex",
+        "lib/backend_web/endpoint.ex",
+        "lib/backend_web/telemetry.ex",
+        "lib/backend_web.ex",
         "test/"
     ]
 }

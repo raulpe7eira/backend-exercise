@@ -5,6 +5,8 @@ defmodule Backend.User do
   use Ecto.Schema
   import Ecto.Changeset
 
+  alias Backend.Order
+
   @type t() :: %__MODULE__{}
 
   @derive {Jason.Encoder, only: [:username, :balance, :product_ids]}
@@ -17,6 +19,8 @@ defmodule Backend.User do
     field :username, :string, primary_key: true
     field :balance, :decimal, null: false
     field :product_ids, {:array, :string}, default: []
+
+    has_many :orders, Order, foreign_key: :user_id, references: :username
 
     timestamps()
   end

@@ -16,7 +16,7 @@ defmodule BackendWeb.ProductsControllerTest do
                "products" => [
                  %{
                    "id" => "ba-ta-ta",
-                   "name" => "Batata",
+                   "name" => "Ba Ta Ta",
                    "price" => "1.99"
                  }
                ]

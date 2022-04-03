@@ -15,13 +15,13 @@ defmodule BackendWeb.ProductsViewTest do
              products: [
                %{
                  id: "ba-ta-ta",
-                 name: "Batata",
-                 price: 1.99
+                 name: "Ba Ta Ta",
+                 price: %Decimal{coef: 199, exp: -2}
                },
                %{
                  id: "ba-ta-ta",
-                 name: "Batata",
-                 price: 1.99
+                 name: "Ba Ta Ta",
+                 price: %Decimal{coef: 199, exp: -2}
                }
              ]
            } == response
@@ -34,8 +34,8 @@ defmodule BackendWeb.ProductsViewTest do
 
     assert %{
              id: "ba-ta-ta",
-             name: "Batata",
-             price: 1.99
+             name: "Ba Ta Ta",
+             price: %Decimal{coef: 199, exp: -2}
            } == response
   end
 end

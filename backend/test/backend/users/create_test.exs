@@ -6,7 +6,7 @@ defmodule Backend.Users.CreateTest do
   @username "raulpe7eira"
 
   describe "by_username/1" do
-    test "when all params are valid, returns the user" do
+    test "when all fields are valid, returns the user" do
       response = Create.by_username(@username)
 
       assert {
@@ -19,7 +19,7 @@ defmodule Backend.Users.CreateTest do
              } = response
     end
 
-    test "when there are invalid params, returns an error" do
+    test "when there are invalid fields, returns an error" do
       response = Create.by_username("")
 
       assert {:error, changeset} = response

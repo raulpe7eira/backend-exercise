@@ -17,7 +17,7 @@ defmodule BackendWeb.UsersControllerTest do
       assert %{
                "user" => %{
                  "data" => %{
-                   "balance" => "50000",
+                   "balance" => "199.1",
                    "product_ids" => []
                  },
                  "user_id" => @username

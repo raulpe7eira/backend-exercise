@@ -7,14 +7,14 @@ defmodule Backend.UserTest do
   alias Backend.User
 
   describe "changeset/2" do
-    test "when all params are valid, returns a valid changeset" do
-      params = build(:user_params)
+    test "when all fields are valid, returns a valid changeset" do
+      fields = build(:user_fields)
 
-      response = User.changeset(params)
+      response = User.changeset(fields)
 
       assert %Changeset{
                changes: %{
-                 balance: %Decimal{coef: 50_000},
+                 balance: %Decimal{coef: 1991, exp: -1},
                  username: "raulpe7eira"
                },
                valid?: true
@@ -22,17 +22,17 @@ defmodule Backend.UserTest do
     end
 
     test "when updating a changeset, returns a valid changeset with the given changes" do
-      params = build(:user_params)
-      update_params = %{username: "rp"}
+      fields = build(:user_fields)
+      update_fields = %{username: "rp"}
 
       response =
-        params
+        fields
         |> User.changeset()
-        |> User.changeset(update_params)
+        |> User.changeset(update_fields)
 
       assert %Changeset{
                changes: %{
-                 balance: %Decimal{coef: 50_000},
+                 balance: %Decimal{coef: 1991, exp: -1},
                  username: "rp"
                },
                valid?: true
@@ -40,9 +40,9 @@ defmodule Backend.UserTest do
     end
 
     test "when there are required error, returns an invalid changeset" do
-      params = build(:user_params, %{username: nil, balance: nil, product_ids: nil})
+      fields = build(:user_fields, %{username: nil, balance: nil, product_ids: nil})
 
-      response = User.changeset(params)
+      response = User.changeset(fields)
 
       assert %{
                username: ["can't be blank"],
@@ -52,9 +52,9 @@ defmodule Backend.UserTest do
     end
 
     test "when there is an invalid balance, returns an invalid changeset" do
-      params = build(:user_params, %{balance: Decimal.new("-1")})
+      fields = build(:user_fields, %{balance: Decimal.new("-1")})
 
-      response = User.changeset(params)
+      response = User.changeset(fields)
 
       assert %{
                balance: ["must be greater than or equal to 0"]

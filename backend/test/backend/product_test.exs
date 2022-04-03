@@ -7,15 +7,15 @@ defmodule Backend.ProductTest do
   alias Backend.Product
 
   describe "changeset/2" do
-    test "when all params are valid, returns a valid changeset" do
-      params = build(:product_params)
+    test "when all fields are valid, returns a valid changeset" do
+      fields = build(:product_fields)
 
-      response = Product.changeset(params)
+      response = Product.changeset(fields)
 
       assert %Changeset{
                changes: %{
                  id: "ba-ta-ta",
-                 name: "Batata",
+                 name: "Ba Ta Ta",
                  price: %Decimal{coef: 199, exp: -2}
                },
                valid?: true
@@ -23,18 +23,18 @@ defmodule Backend.ProductTest do
     end
 
     test "when updating a changeset, returns a valid changeset with the given changes" do
-      params = build(:product_params)
-      update_params = %{id: "bt"}
+      fields = build(:product_fields)
+      update_fields = %{id: "bt"}
 
       response =
-        params
+        fields
         |> Product.changeset()
-        |> Product.changeset(update_params)
+        |> Product.changeset(update_fields)
 
       assert %Changeset{
                changes: %{
                  id: "bt",
-                 name: "Batata",
+                 name: "Ba Ta Ta",
                  price: %Decimal{coef: 199, exp: -2}
                },
                valid?: true
@@ -42,9 +42,9 @@ defmodule Backend.ProductTest do
     end
 
     test "when there are required error, returns an invalid changeset" do
-      params = build(:product_params, %{id: nil, name: nil, price: nil})
+      fields = build(:product_fields, %{id: nil, name: nil, price: nil})
 
-      response = Product.changeset(params)
+      response = Product.changeset(fields)
 
       assert %{
                id: ["can't be blank"],
@@ -54,9 +54,9 @@ defmodule Backend.ProductTest do
     end
 
     test "when there is an invalid price, returns an invalid changeset" do
-      params = build(:product_params, %{price: Decimal.new("-1")})
+      fields = build(:product_fields, %{price: Decimal.new("-1")})
 
-      response = Product.changeset(params)
+      response = Product.changeset(fields)
 
       assert %{
                price: ["must be greater than or equal to 0"]
