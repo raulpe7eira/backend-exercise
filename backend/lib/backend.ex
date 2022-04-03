@@ -6,4 +6,7 @@ defmodule Backend do
   Contexts are also responsible for managing your data, regardless
   if it comes from the database, an external API or others.
   """
+  alias Backend.Users.Get, as: UserGet
+
+  defdelegate get_user_or_create(username), to: UserGet, as: :or_create_by_username
 end
