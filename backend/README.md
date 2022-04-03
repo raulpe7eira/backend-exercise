@@ -1,5 +1,7 @@
 # Backend
 
+[![Elixir CI](https://github.com/raulpe7eira/backend-exercise/actions/workflows/elixir-ci.yml/badge.svg)](https://github.com/raulpe7eira/backend-exercise/actions/workflows/elixir-ci.yml)
+
 > A small project to test my skills.
 
 ![backend-api snapshot](/backend/priv/static/docs/backend-api.png)
