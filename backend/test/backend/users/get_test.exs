@@ -13,23 +13,27 @@ defmodule Backend.Users.GetTest do
 
       response = Get.or_create_by_username(@username)
 
-      assert {:ok,
-              %User{
-                username: @username,
-                balance: %Decimal{coef: 50_000},
-                product_ids: []
-              }} = response
+      assert {
+               :ok,
+               %User{
+                 username: @username,
+                 balance: %Decimal{coef: 50_000},
+                 product_ids: []
+               }
+             } = response
     end
 
     test "when there isn't an user with the given username, returns the user" do
       response = Get.or_create_by_username(@username)
 
-      assert {:ok,
-              %User{
-                username: @username,
-                balance: %Decimal{coef: 50_000},
-                product_ids: []
-              }} = response
+      assert {
+               :ok,
+               %User{
+                 username: @username,
+                 balance: %Decimal{coef: 50_000},
+                 product_ids: []
+               }
+             } = response
     end
 
     test "when there are invalid params, returns an error" do
