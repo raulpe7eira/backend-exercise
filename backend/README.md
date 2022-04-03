@@ -48,6 +48,30 @@ sequenceDiagram
     BACKEND-->>-FRONTEND: :200 ++ :user
 ```
 
+## Feature `GET /api/products`
+
+```mermaid
+sequenceDiagram
+    actor FRONTEND
+    participant BACKEND
+
+    participant P_COMMAND as PRODUCT <br/> <<command>>
+    participant P_MODEL as PRODUCT <br/> <<model>>
+
+    participant BASE
+
+    FRONTEND->>+BACKEND: GET /api/products
+    BACKEND->>+P_COMMAND: List all products
+
+    P_COMMAND->>+P_MODEL: List all products
+    P_MODEL->>+BASE: Select products
+    BASE-->>-P_MODEL: :[products]
+    P_MODEL-->>-P_COMMAND: :[products]
+    
+    P_COMMAND-->>-BACKEND: :200 ++ :[products]
+    BACKEND-->>-FRONTEND: :200 ++ :[products]
+```
+
 ## Learn more
 
   * Official website: https://www.phoenixframework.org/
