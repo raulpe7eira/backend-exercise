@@ -9,12 +9,14 @@ defmodule Backend.Users.CreateTest do
     test "when all params are valid, returns the user" do
       response = Create.by_username(@username)
 
-      assert {:ok,
-              %User{
-                username: @username,
-                balance: %Decimal{coef: 50_000},
-                product_ids: []
-              }} = response
+      assert {
+               :ok,
+               %User{
+                 username: @username,
+                 balance: %Decimal{coef: 50_000},
+                 product_ids: []
+               }
+             } = response
     end
 
     test "when there are invalid params, returns an error" do
