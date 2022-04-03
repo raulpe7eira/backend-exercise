@@ -16,7 +16,7 @@ defmodule Backend.Products.ListTest do
                [
                  %Product{
                    id: "ba-ta-ta",
-                   name: "Batata",
+                   name: "Ba Ta Ta",
                    price: %Decimal{coef: 199, exp: -2}
                  }
                ]

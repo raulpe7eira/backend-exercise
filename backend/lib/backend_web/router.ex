@@ -10,5 +10,6 @@ defmodule BackendWeb.Router do
 
     resources "/users", UsersController, only: [:show], param: "user_id"
     resources "/products", ProductsController, only: [:index]
+    resources "/orders", OrdersController, only: [:create]
   end
 end

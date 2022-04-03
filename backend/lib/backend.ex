@@ -8,7 +8,9 @@ defmodule Backend do
   """
   alias Backend.Users.Get, as: UserGet
   alias Backend.Products.List, as: ProductList
+  alias Backend.Orders.Create, as: OrderCreate
 
   defdelegate get_user_or_create(username), to: UserGet, as: :or_create_by_username
   defdelegate list_products(), to: ProductList, as: :all
+  defdelegate create_order(username, product_ids), to: OrderCreate, as: :by_username
 end

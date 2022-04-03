@@ -18,5 +18,32 @@ defmodule Backend.Products.List do
 
   """
   @spec all() :: {:ok, list(Product.t())} | {:error, String.t()}
-  def all(), do: {:ok, Repo.all(Product)}
+  def all() do
+    products =
+      Product
+      |> Repo.all()
+
+    {:ok, products}
+  end
+
+  @doc """
+  Call all products in ids range.
+
+  Returns `{:ok, [%Product{}, ...]}` or `{:error, "reason"}`
+
+  ### Examples
+
+    iex> Backend.Products.Get.all_in_ids(["prd-1", "prd-2"])
+    [%Product{}, ...]
+
+  """
+  @spec all_in_ids(list(String.t())) :: {:ok, list(Product.t())} | {:error, String.t()}
+  def all_in_ids(ids) do
+    products =
+      Product
+      |> where([product], product.id in ^ids)
+      |> Repo.all()
+
+    {:ok, products}
+  end
 end

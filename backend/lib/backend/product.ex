@@ -28,4 +28,10 @@ defmodule Backend.Product do
     |> validate_required(@required_fields)
     |> validate_number(:price, greater_than_or_equal_to: 0)
   end
+
+  @doc false
+  def cast_as_order_item(data, %__MODULE__{id: id, name: name, price: price}) do
+    data
+    |> changeset(%{id: id, name: name, price: price})
+  end
 end

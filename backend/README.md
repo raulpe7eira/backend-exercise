@@ -72,6 +72,66 @@ sequenceDiagram
     BACKEND-->>-FRONTEND: :200 ++ :[products]
 ```
 
+## Feature `GET /api/products`
+
+```mermaid
+sequenceDiagram
+    actor FRONTEND
+    participant BACKEND
+
+    participant O_COMMAND as ORDER <br/> <<command>>
+    participant O_MODEL as OERDER <br/> <<model>>
+
+    participant P_COMMAND as PRODUCT <br/> <<command>>
+    participant P_MODEL as PRODUCT <br/> <<model>>
+
+    participant U_COMMAND as USER <br/> <<command>>
+    participant U_MODEL as USER <br/> <<model>>
+
+    participant BASE
+
+    FRONTEND->>+BACKEND: POST /api/orders
+    BACKEND->>+O_COMMAND: Create order <br/> by :username
+
+    O_COMMAND->>+P_COMMAND: List all products <br/> in :product_ids
+    P_COMMAND->>+P_MODEL: List all products <br/> in :product_ids
+    P_MODEL->>+BASE: Select products <br/> in :product_ids
+    BASE-->>-P_MODEL: :[products]
+    P_MODEL-->>-P_COMMAND: :[products]
+    P_COMMAND-->>-O_COMMAND: :[products]
+
+    O_COMMAND->>O_COMMAND: Verify products not found [!]
+
+    O_COMMAND->>+U_COMMAND: Get user <br/> by :username
+    U_COMMAND->>+U_MODEL: Get user <br/> by :username
+    U_MODEL->>+BASE: Select user <br/> by :username
+    BASE-->>-U_MODEL: :user
+    U_MODEL-->>-U_COMMAND: :user
+    U_COMMAND-->>-O_COMMAND: :user
+
+    O_COMMAND->>O_COMMAND: Verify products already purchased [!]
+
+    O_COMMAND->>+P_COMMAND: Sum prices <br/> by :[produts]
+    P_COMMAND-->>-O_COMMAND: :total
+
+    O_COMMAND->>O_COMMAND: Verify insufficient balance [!]
+
+    O_COMMAND->>+O_MODEL: Create order <br/> by :username
+    O_MODEL->>+BASE: Create order
+    BASE-->>-O_MODEL: :order
+    O_MODEL-->>-O_COMMAND: :order
+
+    O_COMMAND->>+U_COMMAND: Update benefits <br/> by :username
+    U_COMMAND->>+U_MODEL: Update benefits <br/> by :username
+    U_MODEL->>+BASE: Update user <br/> by :username
+    BASE-->>-U_MODEL: :user
+    U_MODEL-->>-U_COMMAND: :user
+    U_COMMAND-->>-O_COMMAND: :user
+
+    O_COMMAND-->>-BACKEND: :200 ++ :order
+    BACKEND-->>-FRONTEND: :200 ++ :order
+```
+
 ## Learn more
 
   * Official website: https://www.phoenixframework.org/

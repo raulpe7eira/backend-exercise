@@ -17,7 +17,7 @@ defmodule Backend.Users.GetTest do
                :ok,
                %User{
                  username: @username,
-                 balance: %Decimal{coef: 50_000},
+                 balance: %Decimal{coef: 1991, exp: -1},
                  product_ids: []
                }
              } = response
@@ -36,7 +36,7 @@ defmodule Backend.Users.GetTest do
              } = response
     end
 
-    test "when there are invalid params, returns an error" do
+    test "when there are invalid fields, returns an error" do
       response = Get.or_create_by_username("")
 
       assert {:error, changeset} = response
