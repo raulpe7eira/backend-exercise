@@ -3,7 +3,7 @@
 [![Elixir CI](https://github.com/raulpe7eira/backend-exercise/actions/workflows/elixir-ci.yml/badge.svg)](https://github.com/raulpe7eira/backend-exercise/actions/workflows/elixir-ci.yml)
 [![codecov](https://codecov.io/gh/raulpe7eira/backend-exercise/branch/master/graph/badge.svg?token=Z459543PDI)](https://codecov.io/gh/raulpe7eira/backend-exercise)
 
-> A small project to test my skills.
+> A small project to test my skills. It's a simple API can be used by company employees to self-manage their benefits.
 
 ![backend-api snapshot](/backend/priv/static/docs/backend-api.png)
 
@@ -11,7 +11,7 @@
 
 ~> [git](https://git-scm.com) ++
 [asdf](https://asdf-vm.com) ++
-[Docker](https://docker.com)
+[docker](https://docker.com)
 
 ## :writing_hand: How to use and run locally?
 
@@ -50,11 +50,11 @@ mix coveralls.html
 mix phx.server
 ```
 
-After these commands, you can access the following features at [`localhost:4000`](http://localhost:4000). The API documentation is avaliable at home path `/docs`. I wrote with [API Blueprint](https://apiblueprint.org), I used [apiary](https://apiary.io) editor and generated the static `html` with [aglio](https://github.com/danielgtaylor/aglio).
+After these commands, you can access the following features at [`localhost:4000`](http://localhost:4000). The API documentation is avaliable at `/docs` path. I wrote with [API Blueprint](https://apiblueprint.org), I used [apiary](https://apiary.io) editor and generated the static `HTML` with [aglio](https://github.com/danielgtaylor/aglio).
 
 ## :dart: My decisions
 
-1. I planning my deliver with [Github Project](https://github.com/raulpe7eira/backend-exercise/projects/1), and I lock some minute to doodles some pre-solutions, like the ones listed in [doodles section](#doodles).
+1. I planning my deliver with [github project](https://github.com/raulpe7eira/backend-exercise/projects/1), and I lock some minute to doodles some pre-solutions, like the ones listed in [this section](#art-doodles).
 
 1. My code structure has folders to put commands by entities, I don't kwon, if it's a good aprouch... :sweat_smile:.
 
