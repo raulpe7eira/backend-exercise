@@ -8,7 +8,7 @@
 
 ## :warning: You need install before to run locally
 
-[git](https://git-scm.com) ++
+~> [git](https://git-scm.com) ++
 [asdf](https://asdf-vm.com) ++
 [Docker](https://docker.com)
 
