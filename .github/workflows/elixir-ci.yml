@@ -5,12 +5,9 @@ on:
     branches: [ main ]
     paths:
       - 'backend/**'
-      - '!frontend/**'
   pull_request:
-    branches: [ main ]
     paths:
       - 'backend/**'
-      - '!frontend/**'
 
 defaults:
  run:
