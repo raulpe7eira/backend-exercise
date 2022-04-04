@@ -5,12 +5,9 @@ on:
     branches: [ main ]
     paths:
       - 'backend/**'
-      - '!frontend/**'
   pull_request:
-    branches: [ main ]
     paths:
       - 'backend/**'
-      - '!frontend/**'
 
 defaults:
  run:
@@ -24,6 +21,8 @@ jobs:
       - name: Read .tool-versions
         uses: marocchino/tool-versions-action@v1
         id: versions
+        with:
+          path: backend/.tool-versions
       - name: Setup tool versions
         uses: erlef/setup-beam@v1
         with:
@@ -47,6 +46,8 @@ jobs:
       - name: Read .tool-versions
         uses: marocchino/tool-versions-action@v1
         id: versions
+        with:
+          path: backend/.tool-versions
       - name: Setup tool versions
         uses: erlef/setup-beam@v1
         with:
@@ -70,6 +71,8 @@ jobs:
       - name: Read .tool-versions
         uses: marocchino/tool-versions-action@v1
         id: versions
+        with:
+          path: backend/.tool-versions
       - name: Setup tool versions
         uses: erlef/setup-beam@v1
         with:
@@ -104,6 +107,8 @@ jobs:
       - name: Read .tool-versions
         uses: marocchino/tool-versions-action@v1
         id: versions
+        with:
+          path: backend/.tool-versions
       - name: Setup tool versions
         uses: erlef/setup-beam@v1
         with:
@@ -118,8 +123,11 @@ jobs:
       - name: deps
         run: mix deps.get
       - name: coveralls
+        env:
+          MIX_ENV: test
         run: mix coveralls.json
-      - uses: codecov/codecov-action@v1
+      - uses: codecov/codecov-action@v2
         with:
           flags: backend
           token: ${{ secrets.CODECOV_TOKEN }}
+          verbose: true

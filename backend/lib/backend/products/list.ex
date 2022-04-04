@@ -4,7 +4,7 @@ defmodule Backend.Products.List do
   """
   import Ecto.Query, warn: false
 
-  alias Backend.{Repo, Product}
+  alias Backend.{Product, Repo}
 
   @doc """
   Call all products.
@@ -17,8 +17,8 @@ defmodule Backend.Products.List do
     [%Product{}, ...]
 
   """
-  @spec all() :: {:ok, list(Product.t())} | {:error, String.t()}
-  def all() do
+  @spec all :: {:ok, list(Product.t())} | {:error, String.t()}
+  def all do
     products =
       Product
       |> Repo.all()

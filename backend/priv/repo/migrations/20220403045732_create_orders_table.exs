@@ -11,7 +11,7 @@ defmodule Backend.Repo.Migrations.CreateOrdersTable do
       timestamps()
     end
 
-    create constraint :orders, :total_must_be_positive, check: "total >= 0.0"
-    create index :orders, [:user_id]
+    create constraint(:orders, :total_must_be_positive, check: "total >= 0.0")
+    create index(:orders, [:user_id])
   end
 end

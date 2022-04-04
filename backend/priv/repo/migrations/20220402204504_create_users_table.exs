@@ -10,6 +10,6 @@ defmodule Backend.Repo.Migrations.CreateUsersTable do
       timestamps()
     end
 
-    create constraint :users, :balance_must_be_positive, check: "balance >= 0.0"
+    create constraint(:users, :balance_must_be_positive, check: "balance >= 0.0")
   end
 end

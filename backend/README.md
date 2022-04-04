@@ -6,13 +6,13 @@
 
 ![backend-api snapshot](/backend/priv/static/docs/backend-api.png)
 
-## :stop_sign: You need install before to run locally
+## :warning: You need install before to run locally
 
-[git](https://git-scm.com) ++
+~> [git](https://git-scm.com) ++
 [asdf](https://asdf-vm.com) ++
 [Docker](https://docker.com)
 
-## How to use and run locally?
+## :writing_hand: How to use and run locally?
 
 ```bash
 # Clone this repository
@@ -51,7 +51,7 @@ mix phx.server
 
 After these commands, you can access the following features at [`localhost:4000`](http://localhost:4000). The API documentation is avaliable at home path `/docs`. I wrote with [API Blueprint](https://apiblueprint.org), I used [apiary](https://apiary.io) editor and generated the static `html` with [aglio](https://github.com/danielgtaylor/aglio).
 
-## My decisions
+## :dart: My decisions
 
 1. I planning my deliver with [Github Project](https://github.com/raulpe7eira/backend-exercise/projects/1), and I lock some minute to doodles some pre-solutions, like the ones listed in [doodles section](#doodles).
 
@@ -59,7 +59,7 @@ After these commands, you can access the following features at [`localhost:4000`
 
 1. Finally, the project was a very good exercise for me, thanks for the opportunite :pray:.
 
-### Doodles
+### :art: Doodles
 
 > Entity relationship diagram
 
