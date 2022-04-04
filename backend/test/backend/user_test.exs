@@ -3,8 +3,8 @@ defmodule Backend.UserTest do
 
   import Backend.Factory
 
-  alias Ecto.Changeset
   alias Backend.User
+  alias Ecto.Changeset
 
   describe "changeset/2" do
     test "when all fields are valid, returns a valid changeset" do

@@ -2,11 +2,11 @@ defmodule Backend.Orders.Create do
   @moduledoc """
   `Create` commands for orders.
   """
-  alias Backend.{Repo, Order, User}
-  alias Backend.Users.Get, as: UserGet
-  alias Backend.Users.Update, as: UserUpdate
+  alias Backend.{Order, Repo, User}
   alias Backend.Products.List, as: ProductList
   alias Backend.Products.Sum, as: ProductSum
+  alias Backend.Users.Get, as: UserGet
+  alias Backend.Users.Update, as: UserUpdate
 
   require Logger
 

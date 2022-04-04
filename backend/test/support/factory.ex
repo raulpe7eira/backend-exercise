@@ -1,4 +1,5 @@
 defmodule Backend.Factory do
+  @moduledoc false
   use ExMachina.Ecto, repo: Backend.Repo
 
   alias Backend.{Order, Product, User}
