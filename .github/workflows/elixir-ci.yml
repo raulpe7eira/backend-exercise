@@ -20,8 +20,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: Read .tool-versions
         uses: marocchino/tool-versions-action@v1
-        path: backend
         id: versions
+        with:
+          path: backend
       - name: Setup tool versions
         uses: erlef/setup-beam@v1
         with:
@@ -44,8 +45,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: Read .tool-versions
         uses: marocchino/tool-versions-action@v1
-        path: backend
         id: versions
+        with:
+          path: backend
       - name: Setup tool versions
         uses: erlef/setup-beam@v1
         with:
@@ -68,8 +70,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: Read .tool-versions
         uses: marocchino/tool-versions-action@v1
-        path: backend
         id: versions
+        with:
+          path: backend
       - name: Setup tool versions
         uses: erlef/setup-beam@v1
         with:
@@ -103,8 +106,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: Read .tool-versions
         uses: marocchino/tool-versions-action@v1
-        path: backend
         id: versions
+        with:
+          path: backend
       - name: Setup tool versions
         uses: erlef/setup-beam@v1
         with:
