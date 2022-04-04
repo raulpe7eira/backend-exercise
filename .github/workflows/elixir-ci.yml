@@ -22,7 +22,7 @@ jobs:
         uses: marocchino/tool-versions-action@v1
         id: versions
         with:
-          path: backend
+          path: backend/.tool-versions
       - name: Setup tool versions
         uses: erlef/setup-beam@v1
         with:
@@ -47,7 +47,7 @@ jobs:
         uses: marocchino/tool-versions-action@v1
         id: versions
         with:
-          path: backend
+          path: backend/.tool-versions
       - name: Setup tool versions
         uses: erlef/setup-beam@v1
         with:
@@ -72,7 +72,7 @@ jobs:
         uses: marocchino/tool-versions-action@v1
         id: versions
         with:
-          path: backend
+          path: backend/.tool-versions
       - name: Setup tool versions
         uses: erlef/setup-beam@v1
         with:
@@ -108,7 +108,7 @@ jobs:
         uses: marocchino/tool-versions-action@v1
         id: versions
         with:
-          path: backend
+          path: backend/.tool-versions
       - name: Setup tool versions
         uses: erlef/setup-beam@v1
         with:
