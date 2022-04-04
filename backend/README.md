@@ -1,6 +1,7 @@
 # Backend
 
 [![Elixir CI](https://github.com/raulpe7eira/backend-exercise/actions/workflows/elixir-ci.yml/badge.svg)](https://github.com/raulpe7eira/backend-exercise/actions/workflows/elixir-ci.yml)
+[![codecov](https://codecov.io/gh/raulpe7eira/backend-exercise/branch/master/graph/badge.svg?token=Z459543PDI)](https://codecov.io/gh/raulpe7eira/backend-exercise)
 
 > A small project to test my skills.
 
@@ -59,7 +60,7 @@ After these commands, you can access the following features at [`localhost:4000`
 
 1. Finally, the project was a very good exercise for me, thanks for the opportunite :pray:.
 
-### :art: Doodles
+## :art: Doodles
 
 > Entity relationship diagram
 
