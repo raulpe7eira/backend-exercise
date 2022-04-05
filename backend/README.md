@@ -60,26 +60,26 @@ After these commands, you can access the following features at [`localhost:4000`
 
 1. My code structure has folders to put commands by models and models (schemas) in root of domain. By the way, the controller access the domain by facade. I don't kwon, if it's a good aprouch... :sweat_smile: ...but this explanation is important to anyone to find your self in this project.
 
-    ```
+    ```diff
     ...
-    ├── lib
-    │   ├── backend
-    │   │   ├── orders           <~ order commands
-    │   │   │   └── create.ex
-    │   │   ├── products         <~ product commands
-    │   │   │   ├── list.ex
-    │   │   │   └── sum.ex
-    │   │   ├── users            <~ user commands
-    │   │   │   ├── create.ex
-    │   │   │   ├── get.ex
-    │   │   │   └── update.ex
-    │   │   ├── application.ex
-    │   │   ├── order.ex         <~ order model
-    │   │   ├── product.ex       <~ product model
-    │   │   ├── repo.ex
-    │   │   ├── user.ex          <~ user model
-    │   ├── backend.ex           <~ facade
-    │   └── backend_web.ex
+     ├── lib
+     │   ├── backend
+    +│   │   ├── orders           # order commands
+     │   │   │   └── create.ex
+    +│   │   ├── products         # product commands
+     │   │   │   ├── list.ex
+     │   │   │   └── sum.ex
+    +│   │   ├── users            # user commands
+     │   │   │   ├── create.ex
+     │   │   │   ├── get.ex
+     │   │   │   └── update.ex
+     │   │   ├── application.ex
+    +│   │   ├── order.ex         # order model
+    +│   │   ├── product.ex       # product model
+     │   │   ├── repo.ex
+    +│   │   ├── user.ex          # user model
+    +│   ├── backend.ex           # facade
+     │   └── backend_web.ex
     ...
     ```
 
