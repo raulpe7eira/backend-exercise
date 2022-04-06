@@ -58,7 +58,7 @@ After these commands, you can access the following features at [`localhost:4000`
 
 1. I planning my deliver with [github project](https://github.com/raulpe7eira/backend-exercise/projects/1), and I lock some minute to doodles some pre-solutions, like the ones listed in [this section](#art-doodles).
 
-1. My code structure has folders to put commands by models and models (schemas) in root of domain. By the way, the controller access the domain by facade. I don't kwon, if it's a good aprouch... :sweat_smile: ...but this explanation is important to anyone to find your self in this project.
+1. My code structure has folders to put commands by models and models (schemas) in root of domain. By the way, the controller access the domain by facade. I don't kwon if it's a good aprouch... :sweat_smile: ...but this explanation is important to anyone to find your self in this project.
 
     ```diff
     ...
