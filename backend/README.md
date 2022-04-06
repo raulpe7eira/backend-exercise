@@ -50,9 +50,9 @@ mix coveralls.html
 mix phx.server
 ```
 
-After these commands, you can access the following features at [`localhost:4000`](http://localhost:4000). The API documentation is avaliable at `/docs` path only in `dev` or `test` environment. I wrote with [API Blueprint](https://apiblueprint.org),
+After these commands, you can access the following features at [`localhost:4000`](http://localhost:4000) and the API documentation is avaliable at `/docs` path only in `dev` or `test` environment.
 
-> **Note:** I used [apiary](https://apiary.io) editor and generated the static `HTML` with [aglio](https://github.com/danielgtaylor/aglio).
+> **Note:** I wrote API documentation with [API Blueprint](https://apiblueprint.org), I used [apiary](https://apiary.io) editor and generated the static `HTML` with [aglio](https://github.com/danielgtaylor/aglio).
 
 ## :dart: My decisions
 
@@ -208,3 +208,38 @@ sequenceDiagram
     O_COMMAND-->>-BACKEND: :200 ++ :order
     BACKEND-->>-FRONTEND: :200 ++ :order
 ```
+
+## CI / CD
+
+> Flow chart:
+
+```mermaid
+graph LR
+    A([code]) -->|"push (master) or <br/> pull_request"| B{is backend ?}
+
+    subgraph "Github Action (elixir ci)"
+    B -->|yes| E[[check format]]
+    E --> F[[check lint]]
+    F --> H[[check security]]
+    H --> I[[check quality]]
+    I --> J{passed?}
+
+    B -->|no| D([released merge])
+    J --> |no| L[/failed build/]
+    J --> |yes| N[/successed build/]
+    end
+
+    L --> M([locked merge])
+    N --> |"merge (master)"| O
+
+    subgraph Heroku
+    O[[deploy]]
+    end
+```
+
+## Future improvements
+
+- [ ] Review returned status code https://github.com/raulpe7eira/backend-exercise/issues/28
+- [ ] Improve observability in general (logging and metrics) https://github.com/raulpe7eira/backend-exercise/issues/29
+- [ ] Access security to resources https://github.com/raulpe7eira/backend-exercise/issues/30
+- [ ] Product catalog with cache https://github.com/raulpe7eira/backend-exercise/issues/31

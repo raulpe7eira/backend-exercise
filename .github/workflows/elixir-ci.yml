@@ -14,32 +14,6 @@ defaults:
   working-directory: backend
 
 jobs:
-  check_lint:
-    name: Check Lint
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Read .tool-versions
-        uses: marocchino/tool-versions-action@v1
-        id: versions
-        with:
-          path: backend/.tool-versions
-      - name: Setup tool versions
-        uses: erlef/setup-beam@v1
-        with:
-          otp-version: ${{ steps.versions.outputs.erlang }}
-          elixir-version: ${{ steps.versions.outputs.elixir }}
-      - name: Restore dependencies cache
-        uses: actions/cache@v2
-        with:
-          path: deps
-          key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
-          restore-keys: ${{ runner.os }}-mix-
-      - name: deps
-        run: mix deps.get
-      - name: LINT CODE
-        run: mix credo --strict
-
   check_format:
     name: Check Format
     runs-on: ubuntu-latest
@@ -65,6 +39,32 @@ jobs:
         run: mix deps.get
       - name: FORMAT
         run: mix format --check-formatted
+
+  check_lint:
+    name: Check Lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Read .tool-versions
+        uses: marocchino/tool-versions-action@v1
+        id: versions
+        with:
+          path: backend/.tool-versions
+      - name: Setup tool versions
+        uses: erlef/setup-beam@v1
+        with:
+          otp-version: ${{ steps.versions.outputs.erlang }}
+          elixir-version: ${{ steps.versions.outputs.elixir }}
+      - name: Restore dependencies cache
+        uses: actions/cache@v2
+        with:
+          path: deps
+          key: ${{ runner.os }}-mix-${{ hashFiles('**/mix.lock') }}
+          restore-keys: ${{ runner.os }}-mix-
+      - name: deps
+        run: mix deps.get
+      - name: LINT CODE
+        run: mix credo --strict
 
   check_security:
     name: Check Security
