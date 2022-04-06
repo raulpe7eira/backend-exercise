@@ -50,7 +50,7 @@ mix coveralls.html
 mix phx.server
 ```
 
-After these commands, you can access the following features at [`localhost:4000`](http://localhost:4000). The API documentation is avaliable at `/docs` path. I wrote with [API Blueprint](https://apiblueprint.org),
+After these commands, you can access the following features at [`localhost:4000`](http://localhost:4000). The API documentation is avaliable at `/docs` path only in `dev` or `test` environment. I wrote with [API Blueprint](https://apiblueprint.org),
 
 > **Note:** I used [apiary](https://apiary.io) editor and generated the static `HTML` with [aglio](https://github.com/danielgtaylor/aglio).
 
