@@ -15,6 +15,7 @@ defaults:
 
 jobs:
   check_lint:
+    name: Check Lint
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -40,6 +41,7 @@ jobs:
         run: mix credo --strict
 
   check_format:
+    name: Check Format
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -65,6 +67,7 @@ jobs:
         run: mix format --check-formatted
 
   check_security:
+    name: Check Security
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -90,6 +93,7 @@ jobs:
         run: mix sobelow --config
 
   check_quality:
+    name: Check Quality
     runs-on: ubuntu-latest
     services:
       db:
