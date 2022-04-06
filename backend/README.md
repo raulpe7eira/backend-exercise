@@ -9,7 +9,7 @@
 
 ## :warning: You need install before to run locally
 
-~> [git](https://git-scm.com) ++
+> [git](https://git-scm.com) ++
 [asdf](https://asdf-vm.com) ++
 [docker](https://docker.com)
 
@@ -50,19 +50,44 @@ mix coveralls.html
 mix phx.server
 ```
 
-After these commands, you can access the following features at [`localhost:4000`](http://localhost:4000). The API documentation is avaliable at `/docs` path. I wrote with [API Blueprint](https://apiblueprint.org), I used [apiary](https://apiary.io) editor and generated the static `HTML` with [aglio](https://github.com/danielgtaylor/aglio).
+After these commands, you can access the following features at [`localhost:4000`](http://localhost:4000). The API documentation is avaliable at `/docs` path only in `dev` or `test` environment. I wrote with [API Blueprint](https://apiblueprint.org),
+
+> **Note:** I used [apiary](https://apiary.io) editor and generated the static `HTML` with [aglio](https://github.com/danielgtaylor/aglio).
 
 ## :dart: My decisions
 
 1. I planning my deliver with [github project](https://github.com/raulpe7eira/backend-exercise/projects/1), and I lock some minute to doodles some pre-solutions, like the ones listed in [this section](#art-doodles).
 
-1. My code structure has folders to put commands by entities, I don't kwon, if it's a good aprouch... :sweat_smile:.
+1. My code structure has folders to put commands by models and models (schemas) in root of domain. By the way, the controller access the domain by facade. I don't kwon if it's a good aprouch... :sweat_smile: ...but this explanation is important to anyone to find your self in this project.
+
+    ```diff
+    ...
+     ├── lib
+     │   ├── backend
+    +│   │   ├── orders           # order commands
+     │   │   │   └── create.ex
+    +│   │   ├── products         # product commands
+     │   │   │   ├── list.ex
+     │   │   │   └── sum.ex
+    +│   │   ├── users            # user commands
+     │   │   │   ├── create.ex
+     │   │   │   ├── get.ex
+     │   │   │   └── update.ex
+     │   │   ├── application.ex
+    +│   │   ├── order.ex         # order model
+    +│   │   ├── product.ex       # product model
+     │   │   ├── repo.ex
+    +│   │   ├── user.ex          # user model
+    +│   ├── backend.ex           # facade
+     │   └── backend_web.ex
+    ...
+    ```
 
 1. Finally, the project was a very good exercise for me, thanks for the opportunite :pray:.
 
 ## :art: Doodles
 
-> Entity relationship diagram
+> Entity relationship diagram:
 
 ```mermaid
 erDiagram
@@ -71,7 +96,7 @@ erDiagram
   ORDER }o..|{ PRODUCT : ""
 ```
 
-> Sequence diagram to `GET /api/users/:user_id`
+> Sequence diagram to `GET /api/users/:user_id`:
 
 ```mermaid
 sequenceDiagram
@@ -100,7 +125,7 @@ sequenceDiagram
     BACKEND-->>-FRONTEND: :200 ++ :user
 ```
 
-> Sequence diagram to `GET /api/products`
+> Sequence diagram to `GET /api/products`:
 
 ```mermaid
 sequenceDiagram
@@ -124,7 +149,7 @@ sequenceDiagram
     BACKEND-->>-FRONTEND: :200 ++ :[products]
 ```
 
-> Sequence diagram to `GET /api/products`
+> Sequence diagram to `GET /api/products`:
 
 ```mermaid
 sequenceDiagram
