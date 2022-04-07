@@ -87,7 +87,7 @@ After these commands, you can access the following features at [`localhost:4000`
 
 ## :art: My Doodles
 
-> Entity relationship diagram:
+- [x] Entity relationship diagram:
 
 ```mermaid
 erDiagram
@@ -96,7 +96,7 @@ erDiagram
   ORDER }o..|{ PRODUCT : ""
 ```
 
-> Sequence diagram to `GET /api/users/:user_id`:
+- [x] Sequence diagram to `GET /api/users/:user_id`:
 
 ```mermaid
 sequenceDiagram
@@ -125,7 +125,7 @@ sequenceDiagram
     BACKEND-->>-FRONTEND: :200 ++ :user
 ```
 
-> Sequence diagram to `GET /api/products`:
+- [x] Sequence diagram to `GET /api/products`:
 
 ```mermaid
 sequenceDiagram
@@ -149,7 +149,7 @@ sequenceDiagram
     BACKEND-->>-FRONTEND: :200 ++ :[products]
 ```
 
-> Sequence diagram to `GET /api/products`:
+- [x] Sequence diagram to `GET /api/products`:
 
 ```mermaid
 sequenceDiagram
@@ -211,7 +211,7 @@ sequenceDiagram
 
 ## :bellhop_bell: CI / CD
 
-> Flow chart:
+- [x] Flow chart:
 
 ```mermaid
 graph LR
@@ -245,7 +245,9 @@ graph LR
 
 ## :crystal_ball: Future improvements
 
-- [ ] Review returned status code https://github.com/raulpe7eira/backend-exercise/issues/28
-- [ ] Improve observability in general (logging and metrics) https://github.com/raulpe7eira/backend-exercise/issues/29
-- [ ] Access security to resources https://github.com/raulpe7eira/backend-exercise/issues/30
-- [ ] Product catalog with cache https://github.com/raulpe7eira/backend-exercise/issues/31
+- [ ] Create an strong relationship between `user` and `product` #32
+- [ ] Create an strong relationship between `order` and `product` #32
+- [ ] Review returned status code #28
+- [ ] Improve observability in general (logging and metrics) #29
+- [ ] Access security to resources #30
+- [ ] Product catalog with cache #31
