@@ -9,9 +9,9 @@
 
 ## :warning: You need install before to run locally
 
-> [git](https://git-scm.com) ++
-[asdf](https://asdf-vm.com) ++
-[docker](https://docker.com)
+- [x] [git](https://git-scm.com)
+- [x] [asdf](https://asdf-vm.com)
+- [x] [docker](https://docker.com)
 
 ## :writing_hand: How to use and run locally?
 
