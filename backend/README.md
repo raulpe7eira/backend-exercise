@@ -245,9 +245,9 @@ graph LR
 
 ## :crystal_ball: Future improvements
 
-- [ ] Create an strong relationship between `user` and `product` #32
-- [ ] Create an strong relationship between `order` and `product` #32
-- [ ] Review returned status code #28
-- [ ] Improve observability in general (logging and metrics) #29
-- [ ] Access security to resources #30
-- [ ] Product catalog with cache #31
+- [ ] Create an strong relationship between `user` and `product` https://github.com/raulpe7eira/backend-exercise/issues/32
+- [ ] Create an strong relationship between `order` and `product` https://github.com/raulpe7eira/backend-exercise/issues/32
+- [ ] Review returned status code https://github.com/raulpe7eira/backend-exercise/issues/28
+- [ ] Improve observability in general (logging and metrics) https://github.com/raulpe7eira/backend-exercise/issues/29
+- [ ] Access security to resources https://github.com/raulpe7eira/backend-exercise/issues/30
+- [ ] Product catalog with cache https://github.com/raulpe7eira/backend-exercise/issues/31
