@@ -1,0 +1,3 @@
+{
+	"proxies": "${REACT_APP_PROXY_HOST}"
+}
