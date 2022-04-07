@@ -9,9 +9,9 @@
 
 ## :warning: You need install before to run locally
 
-> [git](https://git-scm.com) ++
-[asdf](https://asdf-vm.com) ++
-[docker](https://docker.com)
+- [x] [git](https://git-scm.com)
+- [x] [asdf](https://asdf-vm.com)
+- [x] [docker](https://docker.com)
 
 ## :writing_hand: How to use and run locally?
 
@@ -56,7 +56,7 @@ After these commands, you can access the following features at [`localhost:4000`
 
 ## :dart: My decisions
 
-1. I planning my deliver with [github project](https://github.com/raulpe7eira/backend-exercise/projects/1), and I lock some minute to doodles some pre-solutions, like the ones listed in [this section](#art-doodles).
+1. I planning my deliver with [github project](https://github.com/raulpe7eira/backend-exercise/projects/1), and I lock some minute to doodles some pre-solutions, like the ones listed in [this section](#art-my-doodles).
 
 1. My code structure has folders to put commands by models and models (schemas) in root of domain. By the way, the controller access the domain by facade. I don't kwon if it's a good aprouch... :sweat_smile: ...but this explanation is important to anyone to find your self in this project.
 
@@ -85,9 +85,9 @@ After these commands, you can access the following features at [`localhost:4000`
 
 1. Finally, the project was a very good exercise for me, thanks for the opportunite :pray:.
 
-## :art: Doodles
+## :art: My Doodles
 
-> Entity relationship diagram:
+- [x] Entity relationship diagram:
 
 ```mermaid
 erDiagram
@@ -96,7 +96,7 @@ erDiagram
   ORDER }o..|{ PRODUCT : ""
 ```
 
-> Sequence diagram to `GET /api/users/:user_id`:
+- [x] Sequence diagram to `GET /api/users/:user_id`:
 
 ```mermaid
 sequenceDiagram
@@ -125,7 +125,7 @@ sequenceDiagram
     BACKEND-->>-FRONTEND: :200 ++ :user
 ```
 
-> Sequence diagram to `GET /api/products`:
+- [x] Sequence diagram to `GET /api/products`:
 
 ```mermaid
 sequenceDiagram
@@ -149,7 +149,7 @@ sequenceDiagram
     BACKEND-->>-FRONTEND: :200 ++ :[products]
 ```
 
-> Sequence diagram to `GET /api/products`:
+- [x] Sequence diagram to `GET /api/products`:
 
 ```mermaid
 sequenceDiagram
@@ -209,36 +209,44 @@ sequenceDiagram
     BACKEND-->>-FRONTEND: :200 ++ :order
 ```
 
-## CI / CD
+## :bellhop_bell: CI / CD
 
-> Flow chart:
+- [x] Flow chart:
 
 ```mermaid
 graph LR
-    A([code]) -->|"push (master) or <br/> pull_request"| B{is backend ?}
+    A([Code]) -->|"push (master)<br/>or pull_request"| B{is Backend ?}
 
-    subgraph "Github Action (elixir ci)"
-    B -->|yes| E[[check format]]
-    E --> F[[check lint]]
-    F --> H[[check security]]
-    H --> I[[check quality]]
-    I --> J{passed?}
-
-    B -->|no| D([released merge])
-    J --> |no| L[/failed build/]
-    J --> |yes| N[/successed build/]
+    subgraph "CI (github action)"
+    B -->|yes| C[[Check Format]]
+    C --> D[[Check Lint]]
+    D --> E[[Check Security]]
+    E --> F[[Check Quality]]
+    F --> G{Passed?}
     end
 
-    L --> M([locked merge])
-    N --> |"merge (master)"| O
+    G --> |no| H(["Locked<br/>Merge"])
 
-    subgraph Heroku
-    O[[deploy]]
+    G --> |yes| I(["Released<br/>Merge"])
+    B -->|no| I
+    I --> |"merge (master)"| K
+
+    subgraph "CD (heroku)"
+    K[[Deploy]]
     end
+
+    K --> L(["Code<br/>in Poduction"])
 ```
 
-## Future improvements
+## :rocket: Test the integration in a simulated production environment
 
+- [x] Frontend: https://coverflex-frontend-app.herokuapp.com
+- [x] Backend: https://coverflex-backend-app.herokuapp.com
+
+## :crystal_ball: Future improvements
+
+- [ ] Create an strong relationship between `user` and `product` https://github.com/raulpe7eira/backend-exercise/issues/36
+- [ ] Create an strong relationship between `order` and `product` https://github.com/raulpe7eira/backend-exercise/issues/37
 - [ ] Review returned status code https://github.com/raulpe7eira/backend-exercise/issues/28
 - [ ] Improve observability in general (logging and metrics) https://github.com/raulpe7eira/backend-exercise/issues/29
 - [ ] Access security to resources https://github.com/raulpe7eira/backend-exercise/issues/30
