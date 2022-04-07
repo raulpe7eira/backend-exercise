@@ -209,7 +209,7 @@ sequenceDiagram
     BACKEND-->>-FRONTEND: :200 ++ :order
 ```
 
-## :bellhop_bell: CI / CD delivered
+## :bellhop_bell: CI / CD
 
 > Flow chart:
 
